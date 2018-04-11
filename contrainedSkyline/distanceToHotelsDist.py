@@ -1,3 +1,5 @@
+from __future__ import division
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -18,8 +20,7 @@ num_count=np.zeros(len(dist_list))
 for line in  content:
     d_num = int(line.split(" ")[0])
     counter = int(line.split(" ")[-1])
-    num_count[d_num]=counter
-
+    num_count[d_num]=counter/25562
 
 
 #print len(num_count)
@@ -27,7 +28,20 @@ for line in  content:
 
 def plot_bar():
     index = np.arange(len(dist_list))
-    plt.bar(index,num_count)
+    plt.bar(index,num_count,width=1.0,align="edge",linewidth="1",edgecolor="k")
+    ax = plt.gca()
+    #plt.text(0.05, 20, r'Expected Value = 4.212033487',fontsize=20)
+    plt.xlim(0,len(dist_list))
+    plt.ylabel("Probability")
+    plt.xlabel("Number of Bus Stops within a certain range (800m)")
+
+    textstr = 'Expected Value = 40.04444097'
+
+    props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
+
+    # place a text box in upper left in axes coords
+    ax.text(0.50, 0.95, textstr, transform=ax.transAxes, fontsize=10, verticalalignment='top', bbox=props)
+
     plt.show()
 
 
