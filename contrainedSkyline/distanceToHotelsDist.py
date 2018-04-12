@@ -33,9 +33,9 @@ def plot_bar():
     #plt.text(0.05, 20, r'Expected Value = 4.212033487',fontsize=20)
     plt.xlim(0,len(dist_list))
     plt.ylabel("Probability")
-    plt.xlabel("Number of Bus Stops within a certain range (800m)")
+    plt.xlabel("Number of Bus Stops within a certain range (300m)")
 
-    textstr = 'Expected Value = 40.04444097'
+    textstr = 'Expected Value = 7.822079649'
 
     props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
 
