@@ -2,8 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-node_f_name = "/home/gqxwolf/mydata/projectData/testGraph100_1/data/NodeInfo.txt"
-seg_f_name = "/home/gqxwolf/mydata/projectData/testGraph100_1/data/SegInfo.txt"
+node_f_name = "/home/gqxwolf/mydata/projectData/busline/data/NodeInfo.txt"
+seg_f_name = "/home/gqxwolf/mydata/projectData/busline/data/SegInfo.txt"
 
 node_data = pd.read_csv(node_f_name, sep=" ", header=None)
 seg_data = pd.read_csv(seg_f_name, sep=" ", header=None)
@@ -16,7 +16,7 @@ for index,row in seg_data.iterrows():
     print row[0],row[1]
     x=[node_data.loc[row[0]][1],node_data.loc[row[0]][2]]
     y=[node_data.loc[row[1]][1],node_data.loc[row[1]][2]]
-    plt.arrow(x[0],x[1],y[0]-x[0],y[1]-x[1],fc="k", ec="k",head_width=2, head_length=2 )
+    plt.arrow(x[0],x[1],y[0]-x[0],y[1]-x[1],fc="k", ec="k",head_width=3, head_length=3 )
     # print y
 
 
