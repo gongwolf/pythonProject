@@ -13,9 +13,9 @@ with open(data_file) as f:
 content = [x.strip() for x in content]
 print content
 
-dist_list=[i+1 for i in range(11)]
+dist_list=[i+1 for i in range(7)]
 print dist_list
-sum=int(content[10].split(" ")[1])
+sum=int(content[6].split(" ")[1])
 print "total ",sum
 num_count=np.zeros(len(dist_list))
 print num_count
@@ -24,13 +24,16 @@ print num_count
 
 Expectation = 0;
 
+i = 0
+index = np.zeros(len(dist_list))
 for line in  content:
-    d_num = int(line.split(" ")[0])
-    counter = int(line.split(" ")[-1])
-    num_count[d_num]=counter/sum
-    Expectation = Expectation+d_num*num_count[d_num]
-
-
+    d_num = line.split(" ")[0]
+    counter = float(line.split(" ")[-1])
+    print d_num," ",counter
+    num_count[i]=counter/sum
+    index[i]=i
+    i+=1
+print index
 #print len(num_count)
 #print len(dist_list)
 
@@ -45,23 +48,25 @@ def plot_bar():
     fig.set_figheight(8)
     fig.set_figwidth(10)
 
-    index = np.arange(len(dist_list))
-    plt.bar(index,num_count,width=1.0,align="edge",linewidth="1",edgecolor="k")
-    ax = plt.gca()
+    plt.bar(index,num_count,width=1,align="edge",linewidth="1",edgecolor="k")
+    ax.set_xticks(index)
+    ax.set_xticklabels(['0.3', '0.5', '1', '2', '3', '4', '5'])
+    # plt.xlim(0.0,5)
+
     #plt.text(0.05, 20, r'Expected Value = 4.212033487',fontsize=20)
-    plt.xlim(0,len(dist_list))
-    plt.ylabel("Probability")
-    plt.xlabel("Number of Bus Stops within a certain range")
+    
+    plt.ylabel("Percentage",**font)
+    plt.xlabel("Distance from end node to objects (Km)",**font)
 
-    textstr = 'Expected Value = {0:.2f} ' 
+    # textstr = 'Expected Value = {0:.2f} ' 
 
-    props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
+    # props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
 
     # place a text box in upper left in axes coords
-    ax.text(0.40, 0.95, textstr.format(Expectation), transform=ax.transAxes, fontsize=25, verticalalignment='top', bbox=props)
+    # ax.text(0.40, 0.95, textstr.format(Expectation), transform=ax.transAxes, fontsize=25, verticalalignment='top', bbox=props)
 
-    plt.show()
-    # plt.savefig('distribute_200.pdf', bbox_inches='tight')
+    # plt.show()
+    plt.savefig('percentage_distribution_based_on_psth_toEndNode.pdf', bbox_inches='tight')
 
 
 
