@@ -45,59 +45,76 @@ with open('speedup.txt') as infile:
 # plt.xlabel('|D|/N ', **axis_font)
 # plt.xlabel('average degree of the graph ', **axis_font)
 
+#baseline vs improved, skyline candidates
+# plt.plot(trend[:,0], trend[:,1], 'b^-', label='ExactAlg-baseline', ms=18, lw=4)
+# plt.plot(trend[:,0], trend[:,2], 'ro-', label='ExactAlg-improved', ms=18, lw=4)
+# plt.ylabel('# of Skyline Candidates', **axis_font)
+# # plt.ylabel('Running Time (Sec.)', **axis_font)
+# # plt.ylabel('average degree of the graph', **axis_font)
+# plt.xlabel('average degree of the graph ', **axis_font)
+# plt.legend(loc=2,framealpha=0.3)
+# plt.savefig('speedup.pdf', bbox_inches='tight')
+
+
+
+
 # speedup
-# plt.plot(trend[:,0], trend[:,1], c='g', marker ='*', ls="--",label='Approx-range', ms=18, lw=4)
-# plt.plot(trend[:,0], trend[:,2], c='g', marker ='*', ls="solid",label='Approx-range-indexed', ms=18, lw=4)
-# plt.plot(trend[:,0], trend[:,4], c='k', marker="d",ls="solid",label='Approx-mix', ms=15, lw=4)
-# plt.plot(trend[:,0], trend[:,5], c='k', marker="d",ls="--",label='Approx-mix-indexed', ms=15, lw=4)
-# plt.ylabel('Running Time in (Sec.)', **axis_font)
-# plt.xlabel('# of graph nodes (in thousands) ', **axis_font)
-# plt.legend(loc=2)
+# plt.plot(trend[:,0], trend[:,1], c='g', marker ='s', ls="solid",label='Approx-range', ms=18, lw=4)
+# plt.plot(trend[:,0], trend[:,2], c='g', marker ='s', fillstyle='none',markeredgewidth="4",ls="--",label='Approx-range-indexed', ms=18, lw=4)
+# plt.plot(trend[:,0], trend[:,3], c='k', marker="d",ls="solid",label='Approx-mix', ms=18, lw=4)
+# plt.plot(trend[:,0], trend[:,4], c='k', marker="d", fillstyle='none',markeredgewidth="4",ls="--",label='Approx-mix-indexed', ms=18, lw=4)
+# plt.ylabel('Running Time (Sec.)', **axis_font)
+# plt.xlabel('# of objects (in thousands)', **axis_font)
+# plt.legend(loc=2,framealpha=0.3)
 # plt.savefig('speedup.pdf', bbox_inches='tight')
 
 
 # speedup wit improved exact
 # plt.plot(trend[:,0], trend[:,1], c='r', marker ='o', ls="-",label='ExactAlg-improved', ms=18, lw=4)
-# plt.plot(trend[:,0], trend[:,2], c='g', marker ='*', ls="--",label='Approx-range', ms=18, lw=4)
-# plt.ylabel('Running Time in (Sec.)', **axis_font)
-# plt.xlabel('# of graph nodes (in thousands) ', **axis_font)
+# plt.plot(trend[:,0], trend[:,2],  c='k', marker="d", fillstyle='none',markeredgewidth="4",ls="--",label='Approx-mix-indexed', ms=18, lw=4)
+# plt.ylabel('Running Time (Sec.)', **axis_font)
+# plt.xlabel('# of objects (in thousands)', **axis_font)
 # plt.legend(loc=2)
 # plt.savefig('speedup.pdf', bbox_inches='tight')
 
 
 #frequency
-# plt.plot(trend[:,0], trend[:,1], c='g', marker ='*', ls="--",label='Approx-range', ms=18, lw=4)
-# plt.plot(trend[:,0], trend[:,2], c='k', marker="d",ls="solid",label='Approx-mix', ms=15, lw=4)
-# plt.xlabel('# of graph nodes (in thousands) ', **axis_font)
-# plt.ylabel('frequency of skyline checking', **axis_font)
+# plt.plot(trend[:,0], trend[:,1], c='g', marker ='s', ls="solid",label='Approx-range', ms=18, lw=4)
+# plt.plot(trend[:,0], trend[:,2], c='k', marker="d",ls="solid",label='Approx-mix', ms=18, lw=4)
+# plt.xlabel('# of objects (in thousands)', **axis_font)
+# plt.ylabel('# of Skyline Candidates', **axis_font)
 # plt.legend(loc=1)
 # plt.savefig('speedup.pdf', bbox_inches='tight')
 
 
 #frequency with improved exact
 # plt.plot(trend[:,0], trend[:,1], c='r', marker ='o', ls="-",label='ExactAlg-improved', ms=18, lw=4)
-# plt.plot(trend[:,0], trend[:,2], c='k', marker="d",ls="solid",label='Approx-mix', ms=15, lw=4)
-# plt.xlabel('# of graph nodes (in thousands) ', **axis_font)
-# plt.ylabel('frequency of skyline checking', **axis_font)
+# plt.plot(trend[:,0], trend[:,2], c='k', marker="d",ls="solid",label='Approx-mix', ms=18, lw=4)
+# plt.xlabel('# of objects (in thousands) ', **axis_font)
+# plt.ylabel('# of Skyline Candidates', **axis_font)
 # plt.legend(loc=2)
 # plt.savefig('speedup.pdf', bbox_inches='tight')
 
 # goodness
-plt.plot(trend[:,0], trend[:,1], c='g', marker ='*', ls="--",label='Approx-range', ms=18, lw=4)
-plt.plot(trend[:,0], trend[:,2], c='k', marker="d",ls="solid",label='Approx-mix', ms=15, lw=4)
+plt.plot(trend[:,0], trend[:,1], c='g', marker ='s', ls="solid",label='Approx-range', ms=18, lw=4)
+plt.plot(trend[:,0], trend[:,2], c='k', marker="d",ls="solid",label='Approx-mix', ms=18, lw=4)
 plt.ylabel('Goodness', **axis_font)
-plt.xlabel('# of graph node (in thousands) ', **axis_font)
+plt.xlabel('# of objects (in thousands) ', **axis_font)
 plt.legend(loc=1)
+plt.ylim(0.5,1)
 plt.savefig('goodness.pdf', bbox_inches='tight')
 
 
-# goodness top 10
-# plt.plot(trend[:,0], trend[:,1], c='g', marker ='*', ls="-.",label='Approx-range_top10', ms=18, lw=4)
-# plt.plot(trend[:,0], trend[:,2], c='k', marker="d",ls="-.",label='Approx-mix_top10', ms=15, lw=4)
+# goodness top 10_100
+# plt.plot(trend[:,0], trend[:,1], c='g', marker ='s', ls="-.",label='Approx-range_top10', ms=18, lw=4)
+# plt.plot(trend[:,0], trend[:,2], c='g', marker ='s', fillstyle='none',markeredgewidth="4",ls=":",label='Approx-range_top100', ms=18, lw=4)
+# plt.plot(trend[:,0], trend[:,3], c='k', marker="d",ls=":",label='Approx-mix_top100', ms=18, lw=4)
+# plt.plot(trend[:,0], trend[:,4], c='k', marker="d",fillstyle='none',markeredgewidth="4",ls="-.",label='Approx-mix_top10', ms=18, lw=4)
 # plt.ylabel('Goodness', **axis_font)
-# plt.xlabel('# of graph node (in thousands) ', **axis_font)
-# plt.legend(loc=1)
-# plt.savefig('goodness_top_10.pdf', bbox_inches='tight')
+# plt.xlabel('# of graph nodes (in thousands) ', **axis_font)
+# plt.legend(loc=1,framealpha=0.3)
+# plt.ylim(0.5,1)
+# plt.savefig('goodness_top_10_100.pdf', bbox_inches='tight')
 
 
 #goodness top 100

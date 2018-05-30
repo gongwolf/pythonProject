@@ -13,9 +13,9 @@ with open(data_file) as f:
 content = [x.strip() for x in content]
 print content
 
-dist_list=[i+1 for i in range(11)]
+dist_list=[i+1 for i in range(8)]
 print dist_list
-sum=int(content[10].split(" ")[1])
+sum=int(content[7].split(" ")[1])
 print "total ",sum
 num_count=np.zeros(len(dist_list))
 print num_count
@@ -35,7 +35,7 @@ for line in  content:
     i+=1
 print index
 
-idx = [1,3,5,7,9,10]
+idx = range(8)
 #print len(num_count)
 #print len(dist_list)
 
@@ -51,9 +51,9 @@ def plot_bar():
     fig.set_figwidth(10)
 
     plt.bar(index,num_count,width=1,align="center",linewidth="1",edgecolor="k")
-    ax.set_xticks(idx)
-    ax.set_xticklabels(['0.2', '0.4','0.6','0.8', '1', '4'])
-    plt.xlim(-0.5,10.5)
+    ax.set_xticks(index)
+    ax.set_xticklabels(['0.3', '0.5','1','2','3','4','5', '6'])
+    plt.xlim(-0.5,7.5)
 
     #plt.text(0.05, 20, r'Expected Value = 4.212033487',fontsize=20)
     
@@ -68,7 +68,7 @@ def plot_bar():
     # ax.text(0.40, 0.95, textstr.format(Expectation), transform=ax.transAxes, fontsize=25, verticalalignment='top', bbox=props)
 
     # plt.show()
-    plt.savefig('percentage_distribution_based_on_pathsToStartNode.pdf', bbox_inches='tight')
+    plt.savefig('percentage_distribution_based_on_pathsEndNodeTo.pdf', bbox_inches='tight')
 
 
 
