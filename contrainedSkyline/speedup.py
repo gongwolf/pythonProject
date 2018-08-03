@@ -64,26 +64,42 @@ with open('speedup.txt') as infile:
 # plt.plot(trend[:,0], trend[:,3], c='k', marker="d",ls="solid",label='Approx-mix', ms=18, lw=4)
 # plt.plot(trend[:,0], trend[:,4], c='k', marker="d", fillstyle='none',markeredgewidth="4",ls="--",label='Approx-mix-indexed', ms=18, lw=4)
 # plt.ylabel('Running Time (Sec.)', **axis_font)
-# plt.xlabel('# of objects (in thousands)', **axis_font)
+# # plt.xlabel('# of graph nodes (in thousands)', **axis_font)
+# plt.xlabel(r'$\tau$ (kilometers)', **axis_font)
 # plt.legend(loc=2,framealpha=0.3)
 # plt.savefig('speedup.pdf', bbox_inches='tight')
 
 
-# speedup wit improved exact
-# plt.plot(trend[:,0], trend[:,1], c='r', marker ='o', ls="-",label='ExactAlg-improved', ms=18, lw=4)
-# plt.plot(trend[:,0], trend[:,2],  c='k', marker="d", fillstyle='none',markeredgewidth="4",ls="--",label='Approx-mix-indexed', ms=18, lw=4)
+# speedup varying tau
+# plt.plot(trend[:,0], trend[:,1], c='g', marker ='s', ls="solid",label='Approx-range', ms=18, lw=4)
+# plt.plot(trend[:,0], trend[:,2], c='g', marker ='s', fillstyle='none',markeredgewidth="4",ls="--",label='Approx-range-indexed', ms=18, lw=4)
+# plt.plot(trend[:,0], trend[:,3], c='k', marker="d",ls="solid",label='Approx-mix', ms=18, lw=4)
+# plt.plot(trend[:,0], trend[:,4], c='k', marker="d", fillstyle='none',markeredgewidth="4",ls="--",label='Approx-mix-indexed', ms=18, lw=4)
 # plt.ylabel('Running Time (Sec.)', **axis_font)
-# plt.xlabel('# of objects (in thousands)', **axis_font)
-# plt.legend(loc=2)
+# plt.xlabel(r'$\tau$ (kilometers)', **axis_font)
+# plt.legend(loc=2,framealpha=0.3)
 # plt.savefig('speedup.pdf', bbox_inches='tight')
+
+
+
+# speedup wit improved exact
+plt.plot(trend[:,0], trend[:,1], c='r', marker ='o', ls="-",label='ExactAlg-improved', ms=18, lw=4)
+plt.plot(trend[:,0], trend[:,2], c='g', marker ='s', fillstyle='none',markeredgewidth="4",ls="--",label='Approx-range-indexed', ms=18, lw=4)
+plt.plot(trend[:,0], trend[:,3],  c='k', marker="d", fillstyle='none',markeredgewidth="4",ls="--",label='Approx-mix-indexed', ms=18, lw=4)
+plt.ylabel('Running Time (Sec.)', **axis_font)
+# plt.ylabel('# of Skyline Candidates', **axis_font)
+plt.xlabel('# of objects (in thousands)', **axis_font)
+plt.legend(loc=2)
+plt.savefig('speedup.pdf', bbox_inches='tight')
 
 
 #frequency
 # plt.plot(trend[:,0], trend[:,1], c='g', marker ='s', ls="solid",label='Approx-range', ms=18, lw=4)
 # plt.plot(trend[:,0], trend[:,2], c='k', marker="d",ls="solid",label='Approx-mix', ms=18, lw=4)
-# plt.xlabel('# of objects (in thousands)', **axis_font)
+# # plt.xlabel('# of objects (in thousands)', **axis_font)
+# plt.xlabel(r'$\tau$ (kilometers)', **axis_font)
 # plt.ylabel('# of Skyline Candidates', **axis_font)
-# plt.legend(loc=1)
+# plt.legend(loc=2)
 # plt.savefig('speedup.pdf', bbox_inches='tight')
 
 
@@ -96,13 +112,14 @@ with open('speedup.txt') as infile:
 # plt.savefig('speedup.pdf', bbox_inches='tight')
 
 # goodness
-plt.plot(trend[:,0], trend[:,1], c='g', marker ='s', ls="solid",label='Approx-range', ms=18, lw=4)
-plt.plot(trend[:,0], trend[:,2], c='k', marker="d",ls="solid",label='Approx-mix', ms=18, lw=4)
-plt.ylabel('Goodness', **axis_font)
-plt.xlabel('# of objects (in thousands) ', **axis_font)
-plt.legend(loc=1)
-plt.ylim(0.5,1)
-plt.savefig('goodness.pdf', bbox_inches='tight')
+# plt.plot(trend[:,0], trend[:,1], c='g', marker ='s', ls="solid",label='Approx-range', ms=18, lw=4)
+# plt.plot(trend[:,0], trend[:,2], c='k', marker="d",ls="solid",label='Approx-mix', ms=18, lw=4)
+# plt.ylabel('Goodness', **axis_font)
+# # plt.xlabel('# of objects (in thousands) ', **axis_font)
+# plt.xlabel(r'$\tau$ (kilometers)', **axis_font)
+# plt.legend(loc=5)
+# plt.ylim(0.4,0.9)
+# plt.savefig('goodness.pdf', bbox_inches='tight')
 
 
 # goodness top 10_100
@@ -111,9 +128,10 @@ plt.savefig('goodness.pdf', bbox_inches='tight')
 # plt.plot(trend[:,0], trend[:,3], c='k', marker="d",ls=":",label='Approx-mix_top100', ms=18, lw=4)
 # plt.plot(trend[:,0], trend[:,4], c='k', marker="d",fillstyle='none',markeredgewidth="4",ls="-.",label='Approx-mix_top10', ms=18, lw=4)
 # plt.ylabel('Goodness', **axis_font)
-# plt.xlabel('# of graph nodes (in thousands) ', **axis_font)
-# plt.legend(loc=1,framealpha=0.3)
-# plt.ylim(0.5,1)
+# # plt.xlabel('# of objects (in thousands) ', **axis_font)
+# plt.legend(loc=5,framealpha=0.3,fontsize=22)
+# plt.xlabel(r'$\tau$ (kilometers)', **axis_font)
+# plt.ylim(0.4,0.9)
 # plt.savefig('goodness_top_10_100.pdf', bbox_inches='tight')
 
 
@@ -132,4 +150,13 @@ plt.savefig('goodness.pdf', bbox_inches='tight')
 
 # plt.savefig('speedup.pdf', bbox_inches='tight')
 # plt.show()
+
+# plt.plot(trend[:,0], trend[:,1], c='g', marker ='p', ls="solid",label='Query Time', ms=18, lw=4)
+# plt.plot(trend[:,0], trend[:,2], c='k', marker="8",ls="solid",label='# of Skyline candidates', ms=15, lw=4)
+# plt.ylabel('Ratio', **axis_font)
+# plt.xlabel('# of graph nodes (in thousands)')
+# plt.legend(loc=1)
+# plt.savefig('goodness_top_100.pdf', bbox_inches='tight')
+
+
 

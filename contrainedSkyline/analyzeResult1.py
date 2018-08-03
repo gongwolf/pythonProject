@@ -66,7 +66,7 @@ def analyzeByFileName(file_name):
     return s
 
 
-path_base="/home/gqxwolf/shared_git/bConstrainSkyline/target/output/exp4/"
+path_base="/home/gqxwolf/shared_git/bConstrainSkyline/target/output/exp1/"
 #path_base="/home/gqxwolf/shared_git/bConstrainSkyline/target/output/exp3/"
 #path_base="/home/gqxwolf/shared_git/bConstrainSkyline/target/new_output/"
 
