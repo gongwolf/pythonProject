@@ -40,7 +40,7 @@ with open('speedup.txt') as infile:
 # plt.plot(trend[:,0], trend[:,2], 'gx-', label='Approx-minPath', ms=18, lw=4)
 # plt.plot(trend[:,0], trend[:,5], c='k', marker="s",ls="solid",label='Approx-mix', ms=10, lw=4)
 # plt.plot(trend[:,0], trend[:,3], c='k', marker="s",ls="--",label='Approx-mix-index', ms=10, lw=4)
-#plt.plot(trend[:,0], trend[:,0], 'ro-', ms=10, lw=4, label='Ideal parallel algorithm')
+# plt.plot(trend[:,0], trend[:,0], 'ro-', ms=10, lw=4, label='Ideal parallel algorithm')
 # plt.plot(trend[:,0], serial/trend[:,1], 'b^-', ms=10, lw=4, label='Perfect')
 # plt.xlabel('|D|/N ', **axis_font)
 # plt.xlabel('average degree of the graph ', **axis_font)
@@ -48,26 +48,30 @@ with open('speedup.txt') as infile:
 #baseline vs improved, skyline candidates
 # plt.plot(trend[:,0], trend[:,1], 'b^-', label='ExactAlg-baseline', ms=18, lw=4)
 # plt.plot(trend[:,0], trend[:,2], 'ro-', label='ExactAlg-improved', ms=18, lw=4)
-# plt.ylabel('# of Skyline Candidates', **axis_font)
-# # plt.ylabel('Running Time (Sec.)', **axis_font)
-# # plt.ylabel('average degree of the graph', **axis_font)
-# plt.xlabel('average degree of the graph ', **axis_font)
-# plt.legend(loc=2,framealpha=0.3)
-# plt.savefig('speedup.pdf', bbox_inches='tight')
-
-
-
-
-# speedup
-# plt.plot(trend[:,0], trend[:,1], c='g', marker ='s', ls="solid",label='Approx-range', ms=18, lw=4)
-# plt.plot(trend[:,0], trend[:,2], c='g', marker ='s', fillstyle='none',markeredgewidth="4",ls="--",label='Approx-range-indexed', ms=18, lw=4)
-# plt.plot(trend[:,0], trend[:,3], c='k', marker="d",ls="solid",label='Approx-mix', ms=18, lw=4)
-# plt.plot(trend[:,0], trend[:,4], c='k', marker="d", fillstyle='none',markeredgewidth="4",ls="--",label='Approx-mix-indexed', ms=18, lw=4)
+# # plt.ylabel('# of Skyline Candidates', **axis_font)
 # plt.ylabel('Running Time (Sec.)', **axis_font)
-# # plt.xlabel('# of graph nodes (in thousands)', **axis_font)
-# plt.xlabel(r'$\tau$ (kilometers)', **axis_font)
+# # plt.ylabel('average degree of the graph', **axis_font)
+# # plt.xlabel('average degree of the graph ', **axis_font)
+# plt.xlabel('# of graph nodes (in 100K)', **axis_font)
 # plt.legend(loc=2,framealpha=0.3)
-# plt.savefig('speedup.pdf', bbox_inches='tight')
+# plt.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
+# plt.savefig('speedup_c_exp1.pdf', bbox_inches='tight')
+
+
+
+
+# speedup-approx
+plt.plot(trend[:,0], trend[:,1], c='g', marker ='s', ls="solid",label='Approx-range', ms=18, lw=4)
+plt.plot(trend[:,0], trend[:,2], c='g', marker ='s', fillstyle='none',markeredgewidth="4",ls="--",label='Approx-range-indexed', ms=18, lw=4)
+plt.plot(trend[:,0], trend[:,3], c='k', marker="d",ls="solid",label='Approx-mix', ms=18, lw=4)
+plt.plot(trend[:,0], trend[:,4], c='k', marker="d", fillstyle='none',markeredgewidth="4",ls="--",label='Approx-mix-indexed', ms=18, lw=4)
+plt.ylabel('Running Time (Sec.)', **axis_font)
+# plt.xlabel('# of graph nodes (in thousands)', **axis_font)
+# plt.xlabel(r'$\tau$ (kilometers)', **axis_font)
+plt.xlabel('# of graph nodes (in 100K)', **axis_font)
+plt.legend(loc=2,framealpha=0.3)
+# plt.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
+plt.savefig('speedup_c_exp1.pdf', bbox_inches='tight')
 
 
 # speedup varying tau
@@ -83,24 +87,26 @@ with open('speedup.txt') as infile:
 
 
 # speedup wit improved exact
-plt.plot(trend[:,0], trend[:,1], c='r', marker ='o', ls="-",label='ExactAlg-improved', ms=18, lw=4)
-plt.plot(trend[:,0], trend[:,2], c='g', marker ='s', fillstyle='none',markeredgewidth="4",ls="--",label='Approx-range-indexed', ms=18, lw=4)
-plt.plot(trend[:,0], trend[:,3],  c='k', marker="d", fillstyle='none',markeredgewidth="4",ls="--",label='Approx-mix-indexed', ms=18, lw=4)
-plt.ylabel('Running Time (Sec.)', **axis_font)
-# plt.ylabel('# of Skyline Candidates', **axis_font)
-plt.xlabel('# of objects (in thousands)', **axis_font)
-plt.legend(loc=2)
-plt.savefig('speedup.pdf', bbox_inches='tight')
+# plt.plot(trend[:,0], trend[:,1], c='r', marker ='o', ls="-",label='ExactAlg-improved', ms=18, lw=4)
+# plt.plot(trend[:,0], trend[:,2], c='g', marker ='s', fillstyle='none',markeredgewidth="4",ls="--",label='Approx-range-indexed', ms=18, lw=4)
+# plt.plot(trend[:,0], trend[:,3],  c='k', marker="d", fillstyle='none',markeredgewidth="4",ls="--",label='Approx-mix-indexed', ms=18, lw=4)
+# plt.ylabel('Running Time (Sec.)', **axis_font)
+# # plt.ylabel('# of Skyline Candidates', **axis_font)
+# plt.xlabel('# of objects (in thousands)', **axis_font)
+# plt.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
+# plt.legend(loc=2)
+# plt.savefig('speedup.pdf', bbox_inches='tight')
 
 
 #frequency
 # plt.plot(trend[:,0], trend[:,1], c='g', marker ='s', ls="solid",label='Approx-range', ms=18, lw=4)
 # plt.plot(trend[:,0], trend[:,2], c='k', marker="d",ls="solid",label='Approx-mix', ms=18, lw=4)
-# # plt.xlabel('# of objects (in thousands)', **axis_font)
-# plt.xlabel(r'$\tau$ (kilometers)', **axis_font)
+# plt.xlabel('# of objects (in thousands)', **axis_font)
+# # plt.xlabel(r'$\tau$ (kilometers)', **axis_font)
 # plt.ylabel('# of Skyline Candidates', **axis_font)
-# plt.legend(loc=2)
-# plt.savefig('speedup.pdf', bbox_inches='tight')
+# plt.legend(loc=5)
+# plt.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
+# plt.savefig('speedup_c_exp1.pdf', bbox_inches='tight')
 
 
 #frequency with improved exact
@@ -116,10 +122,11 @@ plt.savefig('speedup.pdf', bbox_inches='tight')
 # plt.plot(trend[:,0], trend[:,2], c='k', marker="d",ls="solid",label='Approx-mix', ms=18, lw=4)
 # plt.ylabel('Goodness', **axis_font)
 # # plt.xlabel('# of objects (in thousands) ', **axis_font)
-# plt.xlabel(r'$\tau$ (kilometers)', **axis_font)
-# plt.legend(loc=5)
+# # plt.xlabel(r'$\tau$ (kilometers)', **axis_font)
+# plt.xlabel('# of graph nodes (in 100K)', **axis_font)
+# plt.legend(loc=1)
 # plt.ylim(0.4,0.9)
-# plt.savefig('goodness.pdf', bbox_inches='tight')
+# plt.savefig('goodness_c_exp6.pdf', bbox_inches='tight')
 
 
 # goodness top 10_100

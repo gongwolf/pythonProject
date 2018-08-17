@@ -7,7 +7,6 @@ def analyzeByFileName(file_name):
     content = [x.strip() for x in content if not x.startswith("====")] 
     
     number=len(content)/2
-    #print number
     counter=1
     
     
@@ -33,16 +32,14 @@ def analyzeByFileName(file_name):
         
         if counter <= number:
             op_base_time+=t_time
-            op_base_visisted_bus_stops+=float(line.split(" ")[-4].split(",")[0])
-            op_base_final_bus_stops+=float(line.split(" ")[-4].split(",")[1])
-            op_base_sk_counter += float(line.split(" ")[-1])
-    
+            op_base_visisted_bus_stops+=float(line.split(" ")[-5].split(",")[0])
+            op_base_final_bus_stops+=float(line.split(" ")[-5].split(",")[1])
+            op_base_sk_counter += float(line.split(" ")[-2])    
         else:
             base_5_time+=t_time
-            base_5_visisted_bus_stops+=float(line.split(" ")[-5].split(",")[0])
-            base_5_final_bus_stops+=float(line.split(" ")[-5].split(",")[1])
-            base_5_sk_counter += float(line.split(" ")[-2])
-    
+            base_5_visisted_bus_stops+=float(line.split(" ")[-6].split(",")[0])
+            base_5_final_bus_stops+=float(line.split(" ")[-6].split(",")[1])
+            base_5_sk_counter += float(line.split(" ")[-3])
         counter+=1
     
     
@@ -66,15 +63,17 @@ def analyzeByFileName(file_name):
     return s
 
 
-path_base="/home/gqxwolf/shared_git/bConstrainSkyline/target/output/exp1/"
-#path_base="/home/gqxwolf/shared_git/bConstrainSkyline/target/output/exp3/"
-#path_base="/home/gqxwolf/shared_git/bConstrainSkyline/target/new_output/"
+path_base="/home/gqxwolf/shared_git/bConstrainSkyline/target/output/complementary/exp3/"
 
+results = {}
 
 for file_name in os.listdir(path_base):
     fname = path_base+file_name
     graphsize = file_name.split("_")[0]
     degree = file_name.split("_")[1]
     hotels = file_name.split("_")[2]
-    s=analyzeByFileName(fname)
-    print "%s %s %s %s" % (graphsize,degree,hotels,s)
+    s="{} {} {} {}".format(graphsize,degree,hotels,analyzeByFileName(fname))
+    results[int(hotels)]=s
+
+for key in sorted(results):
+    print results[key]
