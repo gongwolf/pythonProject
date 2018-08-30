@@ -5,7 +5,7 @@ fname = "/home/gqxwolf/shared_git/bConstrainSkyline/target/output/complementary/
 
 def getFolderSize(path):
     """disk usage in human readable format (e.g. '2,1GB')"""
-    return subprocess.check_output(['du','-s', path]).split()[0].decode('utf-8')
+    return subprocess.check_output(['du','-sh', path]).split()[0].decode('utf-8')
 
 with open(fname) as f:
     content = f.readlines()
@@ -25,6 +25,6 @@ for line in content:
         t_range = index_file_name.split("_")[3]
         hotelnum = index_file_name.split("_")[4]
     if line.startswith("index"):
-        index_c_time = line.split(" ")[-1]
-        print("%s-%s-%s-%s    %s  %s" %(graphsize,degree,t_range,hotelnum,index_c_time,size))
+        index_c_time = float(line.split(" ")[-1])/1000
+        print("%s-%s-%s-%s    %.2f  %s" %(graphsize,degree,t_range,hotelnum,index_c_time,size))
 
